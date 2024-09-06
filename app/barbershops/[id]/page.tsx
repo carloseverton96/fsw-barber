@@ -1,6 +1,8 @@
 import PhoneItem from "@/app/_components/phone-item";
 import ServiceItem from "@/app/_components/service-item";
+import SidebarSheet from "@/app/_components/sidebar-sheet";
 import { Button } from "@/app/_components/ui/button";
+import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet";
 import { db } from "@/app/_lib/prisma";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon, SmartphoneIcon } from "lucide-react";
 import Image from "next/image";
@@ -13,7 +15,6 @@ interface BarbershopPageProps {
         id: string
     }
 }
-
 
 const BarbershopPage = async ({ params }: BarbershopPageProps) => {
     // chamar o meu banco de dados
@@ -30,8 +31,6 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
         return notFound()
     }
 
-   
-
     return (
     <div>
             {/* IMAGEM */}
@@ -47,22 +46,25 @@ const BarbershopPage = async ({ params }: BarbershopPageProps) => {
                 size="icon" 
                 variant="secondary" 
                 className="absolute left-4 top-4" 
-                asChild>
+                asChild
+                >
                 <Link href="/">
                     <ChevronLeftIcon />
                 </Link>    
                 </Button>
 
-                <Button 
-                size="icon" 
-                variant="secondary" 
-                className="absolute right-4 top-4" 
-                >
-                    <MenuIcon />
-                </Button>
-
-
-
+                <Sheet>
+                    <SheetTrigger asChild>
+                        <Button
+                        size="icon" 
+                        variant="outline" 
+                        className="absolute right-4 top-4"
+                        >
+                            <MenuIcon />
+                        </Button>
+                    </SheetTrigger>
+                    <SidebarSheet />
+                </Sheet>
         </div>
 
         <div className="border-b border-solid p-5">

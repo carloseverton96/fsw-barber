@@ -23,7 +23,6 @@ const BarbershopItem = ({ barbershop }: BarbershopItemProps) => {
             src={barbershop.imageUrl}
           />
 
-          {/* precisa ser criado no banco de dados */}
           <Badge
             className="absolute left-2 top-2 space-x-1"
             variant="secondary"
